@@ -21,3 +21,7 @@ For tables, refer the files under `04379243`.
 ### References
 * [deep cloud The Application of a Data-driven, Generative Model in Design](https://sites.google.com/site/artml2018/showcase/final-project)
 * [PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation](https://arxiv.org/abs/1612.00593)
+
+### Misc
+* [how to activate an environment in anaconda navigator](https://conda.io/docs/user-guide/tasks/manage-environments.html#activating-an-environment)
+* [Jupyter notebook config](https://jupyter-notebook.readthedocs.io/en/stable/config.html)
