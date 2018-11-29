@@ -17,6 +17,7 @@ For tables, refer the files under `04379243`.
 ### Environments
 
 * Python 3.6.5
+* CUDA 9.0
 
 ### References
 * [deep cloud The Application of a Data-driven, Generative Model in Design](https://sites.google.com/site/artml2018/showcase/final-project)
