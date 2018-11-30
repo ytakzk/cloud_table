@@ -26,3 +26,4 @@ For tables, refer the files under `04379243`.
 ### Misc
 * [how to activate an environment in anaconda navigator](https://conda.io/docs/user-guide/tasks/manage-environments.html#activating-an-environment)
 * [Jupyter notebook config](https://jupyter-notebook.readthedocs.io/en/stable/config.html)
+* [Algorithm for generating a triangular mesh from a cloud of points](https://stackoverflow.com/questions/7879160/algorithm-for-generating-a-triangular-mesh-from-a-cloud-of-points)
