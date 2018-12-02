@@ -28,22 +28,27 @@ For tables, refer the files under `04379243`.
 * [pyntcloud](https://github.com/daavoo/pyntcloud)  
 * [CGAL](https://www.cgal.org/)
 
+
 ## Environments
 
 #### Neural Nets
 * Python 3.6.5
 * CUDA 9.0
 
+
 #### Mesh Generator
 * C++14 (GNU++14)
 * libc++
 * CGAL 4.13
+
 
 ## References
 
 #### Papers
 * [deep cloud The Application of a Data-driven, Generative Model in Design](https://sites.google.com/site/artml2018/showcase/final-project)
 * [PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation](https://arxiv.org/abs/1612.00593)
+* [Three-Dimensional Alpha Shapes](http://pub.ist.ac.at/~edels/Papers/1994-J-04-3DAlphaShapes.pdf)
+
 
 #### Codes
 * [fxia22/pointnet.pytorch](https://github.com/fxia22/pointnet.pytorch)
