@@ -3,7 +3,7 @@
 ETH DFAB 2018 Project for Frame Mobel by Nicolas & Yuta
 
 
-# Workflow
+## Workflow
 
 1. Download mesh data of table from [ShapeNet](https://www.shapenet.org/)
 1. Convert meshes into point clouds
