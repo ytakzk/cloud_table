@@ -12,6 +12,7 @@ For tables, refer the files under `04379243`.
 
 * [PyTorch](https://pytorch.org/)
 * [pyntcloud](https://github.com/daavoo/pyntcloud)  
+* [CGAL](https://www.cgal.org/)
 
 ## Environments
 
