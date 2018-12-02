@@ -13,11 +13,16 @@ For tables, refer the files under `04379243`.
 * [PyTorch](https://pytorch.org/)
 * [pyntcloud](https://github.com/daavoo/pyntcloud)  
 
-
 ## Environments
 
+#### Neural Nets
 * Python 3.6.5
 * CUDA 9.0
+
+#### Mesh Generator
+* C++14 (GNU++14)
+* libc++
+* CGAL 4.13
 
 ## References
 
@@ -34,3 +39,6 @@ For tables, refer the files under `04379243`.
 * [how to activate an environment in anaconda navigator](https://conda.io/docs/user-guide/tasks/manage-environments.html#activating-an-environment)
 * [Jupyter notebook config](https://jupyter-notebook.readthedocs.io/en/stable/config.html)
 * [Algorithm for generating a triangular mesh from a cloud of points](https://stackoverflow.com/questions/7879160/algorithm-for-generating-a-triangular-mesh-from-a-cloud-of-points)
+* [Using CGAL and Xcode](https://3d.bk.tudelft.nl/ken/en/2016/03/16/using-cgal-and-xcode.html)
+* [3D Alpha Shapes](https://doc.cgal.org/latest/Alpha_shapes_3/index.html)
+* [Everything You Always Wanted to Know About Alpha Shapes But Were Afraid to Ask](http://cgm.cs.mcgill.ca/~godfried/teaching/projects97/belair/alpha.html)
