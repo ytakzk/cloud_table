@@ -2,6 +2,20 @@
 
 ETH DFAB 2018 Project for Frame Mobel by Nicolas & Yuta
 
+
+# Workflow
+
+1. Download mesh data of table from [ShapeNet](https://www.shapenet.org/)
+1. Convert meshes into point clouds
+1. Train a neural net (auto encoder) to get a latent space which could express fundamental features of table
+1. Generate new tables as point clouds through the trained model  
+(We might have several options how to use the model to generate a new shape. Need to be discussed.)
+1. Selection process (Could be manual process)
+1. Convert point clouds to a mesh or edges (Egdes can be rods)
+1. Apply a joint system between adjacent edges
+1. Completed
+
+
 ## Data Source
 * [Point clouds](https://www.dropbox.com/s/vmsdrae6x5xws1v/shape_net_core_uniform_samples_2048.zip)  
 Mesh model of Shape-Net-Core download 1 point-cloud with 2048 points . 
