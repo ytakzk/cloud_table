@@ -1,9 +1,10 @@
 # DeepTable
 
-ETH DFAB 2018 Project for Frame Mobel by Nicolas & Yuta
-Exercice to design an fdm printed join for a space frame, aimed at a table.
-The general idea is to have as little human input as possible for the general design of the table. 
-The join in contrast would have a strong emphasize on the human intent.
+ETH DFAB 2018 Project for Frame Mobel by Nicolas & Yuta  
+
+Exercice to design a fdm printed join for a space frame, aimed at a table.  
+The general idea is to have as little human input as possible for the general design of the table.  
+The join in contrast would have a strong emphasize on the human intent.  
 
 
 ## Workflow
