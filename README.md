@@ -61,6 +61,10 @@ For tables, refer the files under `04379243`.
 * [optas/latent_3d_points](https://github.com/optas/latent_3d_points)
 
 
+#### Works
+* [Eigenchairs](https://vimeo.com/57901236)
+
+
 ## Misc
 * [how to activate an environment in anaconda navigator](https://conda.io/docs/user-guide/tasks/manage-environments.html#activating-an-environment)
 * [Jupyter notebook config](https://jupyter-notebook.readthedocs.io/en/stable/config.html)
