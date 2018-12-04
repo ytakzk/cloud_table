@@ -18,12 +18,13 @@ class ChamferLoss(nn.Module):
 		loss_1 = torch.sum(mins)
 		mins, _ = torch.min(P, 2)
 		loss_2 = torch.sum(mins)
-
 		return loss_1 + loss_2
 
 
 	def batch_pairwise_dist(self,x,y):
-		bs, num_points_x, points_dim = x.size()
+		x = x.transpose(2, 1)
+		y = y.transpose(2, 1)
+		_, num_points_x, _ = x.size()
 		_, num_points_y, _ = y.size()
 		xx = torch.bmm(x, x.transpose(2,1))
 		yy = torch.bmm(y, y.transpose(2,1))
