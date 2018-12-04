@@ -68,3 +68,6 @@ For tables, refer the files under `04379243`.
 * [Using CGAL and Xcode](https://3d.bk.tudelft.nl/ken/en/2016/03/16/using-cgal-and-xcode.html)
 * [3D Alpha Shapes](https://doc.cgal.org/latest/Alpha_shapes_3/index.html)
 * [Everything You Always Wanted to Know About Alpha Shapes But Were Afraid to Ask](http://cgm.cs.mcgill.ca/~godfried/teaching/projects97/belair/alpha.html)
+* [VAE with PyTorch](https://github.com/pytorch/examples/blob/master/vae/main.py)
+* [Intuitively Understanding Variational Autoencoders](https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf)
+* [What The Heck Are VAE-GANs?](https://towardsdatascience.com/what-the-heck-are-vae-gans-17b86023588a)
