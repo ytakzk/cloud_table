@@ -104,3 +104,4 @@ venv.bak/
 
 .DS_Store
 table_generator/data/**/
+table_generator/models/*_tmp.pt
