@@ -21,6 +21,25 @@ The join in contrast would have a strong emphasize on the human intent.
 1. Apply a joint system between connected edges
 1. Completed
 
+## How to Use
+
+1. Clone this repository
+1. Download [Point clouds](https://www.dropbox.com/s/vmsdrae6x5xws1v/shape_net_core_uniform_samples_2048.zip) and paste the directory of  `04379243` under `DeepCloud/table_generator/data/`
+1. Build a docker image `cd cgal_on_ubuntu && docker build -t pointcloud2mesh`
+1. Run a docker container `docker run -it -name pointcloud2mesh -v {ABSOLUTE PATH}/DeepTable/pointcloud2mesh/mount:/DeepTable/pointcloud2mesh/mount pointcloud2mesh`
+1. In the docker container, paste the following scripts.
+```
+cd DeepTable
+git init
+git remote add origin https://github.com/ytakzk/DeepTable.git
+cd pointcloud2mesh
+mkdir build
+cd build
+cmake ..
+make
+```
+1. exit from the container
+1. Run a grasshopper file
 
 ## Data Source
 * [Point clouds](https://www.dropbox.com/s/vmsdrae6x5xws1v/shape_net_core_uniform_samples_2048.zip)  
@@ -39,10 +58,12 @@ For tables, refer the files under `04379243`.
 
 #### Neural Nets
 * Python 3.6.5
+* PyTorch 0.4.1
 * CUDA 9.0
 
 
 #### Mesh Generator
+* Docker
 * C++14 (GNU++14)
 * libc++
 * CGAL 4.13
