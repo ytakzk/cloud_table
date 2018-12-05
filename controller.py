@@ -56,7 +56,7 @@ def fetch_data(index):
     index_list = [index]
     point_clouds = load_point_clouds(index_list, directory='./table_generator/data/04379243')
     print(point_clouds.shape)
-    return '1'
+    return 1
 
 
 def manipulate(params):
@@ -66,14 +66,14 @@ def manipulate(params):
     '''
     manipulate its latent vector and get a new point cloud
     '''
-
+    
     manipulator = {} 
     for key in params:
-        manipulator[key] = float(params[key][0])
-    
+        manipulator[key] = params[key]
+
     generator.manipulator = manipulator
     generator_output = generator(point_clouds)
-    return '1'
+    return 1
 
 
 def generate_mesh():
@@ -87,4 +87,4 @@ def generate_mesh():
 
     command = 'docker exec cgal /DeepTable/pointcloud2mesh/build/pointcloud2mesh.out ./mount/point_cloud.txt ./mount/output.off'
     call(command.split(' '))
-    return '1'
+    return 1

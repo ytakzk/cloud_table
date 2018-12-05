@@ -1,41 +1,68 @@
+import socket
 import argparse
-from flask import Flask, request
+
 import controller
+import json
 
-def main():
+parser = argparse.ArgumentParser(description='initial conditions')
+parser.add_argument('-port', action='store', default='9999', type=int)
+args = parser.parse_args()
 
-    app = Flask(__name__)
-    controller.init()
+TCP_IP = '127.0.0.1'
+TCP_PORT = args.port
+BUFFER_SIZE = 1024
 
-    parser = argparse.ArgumentParser(description='initial conditions')
-    parser.add_argument('-port', action='store', default='9999', type=int)
-    args = parser.parse_args()
-    print(args)
+print('Connection address:', TCP_IP, TCP_PORT)
 
-    @app.route('/')
-    def index():
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.bind((TCP_IP, TCP_PORT))
+s.listen(1)
+ 
+conn, addr = s.accept()
+
+print('initialize controller')
+controller.init()
+
+while 1:
+
+    data = conn.recv(BUFFER_SIZE)
+    if not data: break
+
+    string = data.decode('utf-8')
+    print(string)
+
+    arr = string.split('__')
+    key = arr[0]
+
+    if key == 'fetch_data':
         
-        return '1'
+        index = int(arr[1])
+        res = controller.fetch_data(index)
+        conn.sendall(data)
 
-    @app.route('/fetch_data/<int:index>')
-    def fetch_data(index):
+    elif key == 'manipulate':
+
+        params = {}
+        diff_str = arr[1]
+        for diff_vals in diff_str.split(','):
+            vals = diff_vals.split(':')
+            k = int(vals[0])
+            d = float(vals[1])
+            params[k] = d
+
+        controller.manipulate(params)
+        conn.sendall(data)
+
+    elif key == 'generate_mesh':
         
-        return controller.fetch_data(index)
+        controller.generate_mesh()
+        conn.sendall(data)
 
-    @app.route('/manipulate/')
-    def manipulate():
+    elif key == 'close':
+        s.close()
+        break    
+    else:
+        pass
 
-        params = dict(request.args)
-        return controller.manipulate(params)
-
-    @app.route('/generate_mesh')
-    def generate_mesh():
-
-        return controller.generate_mesh()
-
-
-    app.run(port=args.port, debug=True)
-
-if __name__ == "__main__":
-
-    main()
+    print("received data:", data)
+    print("received key:", key)
