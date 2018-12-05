@@ -14,10 +14,16 @@ class Generator(AutoEncoder):
 
         self.encoder = encoder
         self.decoder = decoder
+        self.manipulator = {}
 
     def forward(self, x):
 
         x = self.encoder(x)
+
+        # manipulation
+        for key in self.manipulator:
+            x[:,int(key),:] += self.manipulator[key]
+
         x = self.decoder(x)
         return x
 
@@ -53,7 +59,7 @@ def fetch_data(index):
     return '1'
 
 
-def manipulate():
+def manipulate(params):
 
     global generator_output
 
@@ -61,6 +67,11 @@ def manipulate():
     manipulate its latent vector and get a new point cloud
     '''
 
+    manipulator = {} 
+    for key in params:
+        manipulator[key] = float(params[key][0])
+    
+    generator.manipulator = manipulator
     generator_output = generator(point_clouds)
     return '1'
 

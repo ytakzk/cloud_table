@@ -1,5 +1,5 @@
 import argparse
-from flask import Flask
+from flask import Flask, request
 import controller
 
 def main():
@@ -24,8 +24,9 @@ def main():
 
     @app.route('/manipulate/')
     def manipulate():
-        
-        return controller.manipulate()
+
+        params = dict(request.args)
+        return controller.manipulate(params)
 
     @app.route('/generate_mesh')
     def generate_mesh():
@@ -36,5 +37,5 @@ def main():
     app.run(port=args.port, debug=True)
 
 if __name__ == "__main__":
-    
+
     main()

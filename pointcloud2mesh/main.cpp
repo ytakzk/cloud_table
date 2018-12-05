@@ -89,9 +89,9 @@ int main(int argc, char* argv[])
         ind << "3 " << 3*i << " " << 3*i+1 << " " << 3*i+2 << "\n";
     }
     
-    std::cout << "OFF "<< 3*nbf << " " << nbf << " 0\n";
-    std::cout << pts.str();
-    std::cout << ind.str();
+    // std::cout << "OFF "<< 3*nbf << " " << nbf << " 0\n";
+    // std::cout << pts.str();
+    // std::cout << ind.str();
 
     
     std::ofstream output_file;
