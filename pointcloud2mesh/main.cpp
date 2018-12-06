@@ -4,6 +4,7 @@
 #include <CGAL/Alpha_shape_cell_base_3.h>
 #include <CGAL/Alpha_shape_vertex_base_3.h>
 #include <CGAL/Delaunay_triangulation_3.h>
+#include <CGAL/Surface_mesh.h>
 #include <fstream>
 #include <list>
 #include <cassert>
@@ -18,20 +19,21 @@ typedef K::Point_3                                       Point;
 typedef Alpha_shape_3::Alpha_iterator                    Alpha_iterator;
 typedef Alpha_shape_3::NT                                NT;
 typedef Alpha_shape_3::Edge                 Edge;
+typedef CGAL::Surface_mesh<Point> Mesh;
 
-int main(int argc, char* argv[]) 
+int main(int argc, char* argv[])
 {
-
+    
     if (argc != 3) {
         throw std::invalid_argument("The 1st argument: input file name\nThe 2nd argument: output file name (.off)");
     }
-
+    
     std::string input_file_name(argv[1]);
     std::string output_file_name(argv[2]);
-
+    
     std::cout << input_file_name << std::endl;
     std::cout << output_file_name << std::endl;
-
+    
     Delaunay dt;
     std::ifstream is(input_file_name);
     int n;
@@ -60,46 +62,42 @@ int main(int argc, char* argv[])
     std::vector<Alpha_shape_3::Facet> facets;
     as.get_alpha_shape_facets(std::back_inserter(facets), Alpha_shape_3::REGULAR);
     
-    std::stringstream pts;
-    std::stringstream ind;
-    
-    std::size_t nbf=facets.size();
-    for (std::size_t i=0;i<nbf;++i)
-    {
-        //To have a consistent orientation of the facet, always consider an exterior cell
-        if ( as.classify( facets[i].first )!=Alpha_shape_3::EXTERIOR )
-            facets[i]=as.mirror_facet( facets[i] );
-        CGAL_assertion(  as.classify( facets[i].first )==Alpha_shape_3::EXTERIOR  );
+    Mesh mesh;
+    for (auto i = 0; i < facets.size(); i++) {
         
-        int indices[3]={
-            (facets[i].second+1)%4,
-            (facets[i].second+2)%4,
-            (facets[i].second+3)%4,
-        };
+        //checks for exterior cells
+        if (as.classify(facets[i].first) != Alpha_shape_3::EXTERIOR)
+        {
+            facets[i] = as.mirror_facet(facets[i]);
+        }
         
-        /// according to the encoding of vertex indices, this is needed to get
-        /// a consistent orienation
-        if ( facets[i].second%2==0 ) std::swap(indices[0], indices[1]);
+        CGAL_assertion(as.classify(facets[i].first) == Alpha_shape_3::EXTERIOR);
         
+        // gets indices of alpha shape and gets consistent orientation
+        int indices[3] = { (facets[i].second + 1) % 4, (facets[i].second + 2)
+            % 4, (facets[i].second + 3) % 4 };
         
-        pts <<
-        facets[i].first->vertex(indices[0])->point() << "\n" <<
-        facets[i].first->vertex(indices[1])->point() << "\n" <<
-        facets[i].first->vertex(indices[2])->point() << "\n";
-        ind << "3 " << 3*i << " " << 3*i+1 << " " << 3*i+2 << "\n";
-    }
-    
-    // std::cout << "OFF "<< 3*nbf << " " << nbf << " 0\n";
-    // std::cout << pts.str();
-    // std::cout << ind.str();
+        if (facets[i].second % 2 == 0) {
+        
+            std::swap(indices[0], indices[1]);
+        }
+        
+        // adds data to cgal mesh
+        for (auto j = 0; j < 3; ++j) {
+            
+            mesh.add_vertex(facets[i].first->vertex(indices[j])->point());
+        }
 
-    
-    std::ofstream output_file;
-    output_file.open (output_file_name);
-    output_file << "OFF\n"<< 3*nbf << " " << nbf << " 0\n";
-    output_file << pts.str();
-    output_file << ind.str();
-    output_file.close();
+        auto v0 = static_cast<Mesh::Vertex_index>(3 * i);
+        auto v1 = static_cast<Mesh::Vertex_index>(3 * i + 1);
+        auto v2 = static_cast<Mesh::Vertex_index>(3 * i + 2);
+        
+        mesh.add_face(v0, v1, v2);
+    }
+
+    std::ofstream output(output_file_name);
+    output << mesh;
+    output.close();
 
     return 0;
 }
