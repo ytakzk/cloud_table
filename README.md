@@ -26,7 +26,7 @@ The join in contrast would have a strong emphasize on the human intent.
 1. Clone this repository
 1. Download [Point clouds](https://www.dropbox.com/s/vmsdrae6x5xws1v/shape_net_core_uniform_samples_2048.zip) and paste the directory of  `04379243` under `DeepCloud/table_generator/data/`
 1. Build a docker image `cd cgal_on_ubuntu && docker build -t pointcloud2mesh`
-1. Run a docker container `docker run -it -name pointcloud2mesh -v {ABSOLUTE PATH}/DeepTable/pointcloud2mesh/mount:/DeepTable/pointcloud2mesh/mount pointcloud2mesh`
+1. Run a docker container `docker run -it --name pointcloud2mesh -v {ABSOLUTE PATH}/DeepTable/pointcloud2mesh/mount:/DeepTable/pointcloud2mesh/mount pointcloud2mesh`
 1. In the docker container, paste the following scripts.
 ```
 cd DeepTable
