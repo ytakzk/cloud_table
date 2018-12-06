@@ -7,6 +7,7 @@
 cd DeepTable
 git init
 git remote add origin https://github.com/ytakzk/DeepTable.git
+git pull origin master
 cd pointcloud2mesh
 mkdir build
 cd build
