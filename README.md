@@ -24,7 +24,7 @@ The join in contrast would have a strong emphasize on the human intent.
 
 1. Clone this repository
 1. Download [Point clouds](https://www.dropbox.com/s/vmsdrae6x5xws1v/shape_net_core_uniform_samples_2048.zip) and paste the directory of  `04379243` under `DeepCloud/table_generator/data/`
-1. Build a docker image `cd cgal_on_ubuntu && docker build -t pointcloud2mesh`
+1. Build a docker image `cd cgal_on_ubuntu && docker build . -t pointcloud2mesh`
 1. Run a docker container `docker run -it --name pointcloud2mesh -v {ABSOLUTE PATH}/DeepTable/pointcloud2mesh/mount:/DeepTable/pointcloud2mesh/mount pointcloud2mesh`
 1. In the docker container, paste the scripts in [installer.sh](https://github.com/ytakzk/DeepTable/blob/master/pointcloud2mesh/docker/scripts/installer.sh)
 1. exit from the container
@@ -85,3 +85,12 @@ For tables, refer the files under `04379243`.
 * [VAE with PyTorch](https://github.com/pytorch/examples/blob/master/vae/main.py)
 * [Intuitively Understanding Variational Autoencoders](https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf)
 * [What The Heck Are VAE-GANs?](https://towardsdatascience.com/what-the-heck-are-vae-gans-17b86023588a)
+
+
+## TODO
+* Model improvement
+* Mesh decimation
+* Joint refinement
+* Title
+* Material consumption optimization
+* Table top
