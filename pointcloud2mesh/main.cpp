@@ -28,8 +28,8 @@ int main(int argc, char* argv[])
             throw std::invalid_argument("The 1st argument: input file name\nThe 2nd argument: output file name (.off)\nThe 3rd argument: alpha value (if not positive, aptimized alpha is used)");
     }
     
-    std::string input_file_name(argv[3]);
-    std::string output_file_name(argv[3]);
+    std::string input_file_name(argv[1]);
+    std::string output_file_name(argv[2]);
     float alpha(std::stof(argv[3]));
     
     std::cout << input_file_name << std::endl;
