@@ -85,7 +85,7 @@ For tables, refer the files under `04379243`.
 * [VAE with PyTorch](https://github.com/pytorch/examples/blob/master/vae/main.py)
 * [Intuitively Understanding Variational Autoencoders](https://towardsdatascience.com/intuitively-understanding-variational-autoencoders-1bfe67eb5daf)
 * [What The Heck Are VAE-GANs?](https://towardsdatascience.com/what-the-heck-are-vae-gans-17b86023588a)
-
+* [robust algorithm for surface reconstruction from 3D point cloud?](https://stackoverflow.com/questions/838761/robust-algorithm-for-surface-reconstruction-from-3d-point-cloud)
 
 ## TODO
 * Model improvement
