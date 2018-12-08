@@ -30,6 +30,8 @@ The join in contrast would have a strong emphasize on the human intent.
 1. exit from the container
 1. Run a grasshopper file
 
+After you restart your computer, enter `docker start -i pointcloud2mesh` to launch the server.
+
 ## Data Source
 * [Point clouds](https://www.dropbox.com/s/vmsdrae6x5xws1v/shape_net_core_uniform_samples_2048.zip)  
 Mesh model of Shape-Net-Core download 1 point-cloud with 2048 points per model. 
