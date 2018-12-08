@@ -35,6 +35,22 @@ def load_off(file_name):
     return np.random.permutation(np.array(vertices))[:2048]
 
 
+def rotate_point_cloud(batch_data):
+
+    rotated_data = np.zeros(batch_data.shape, dtype=np.float32)
+    for k in range(batch_data.shape[0]):
+        rotation_angle = np.random.uniform() * 2 * np.pi
+        cosval = np.cos(rotation_angle)
+        sinval = np.sin(rotation_angle)
+        rotation_matrix = np.array([[cosval, 0, sinval],
+                                    [0, 1, 0],
+                                    [-sinval, 0, cosval]])
+        shape_pc = batch_data[k, ...].T
+        
+        rotated_data[k, ...] = np.dot(shape_pc.reshape((-1, 3)), rotation_matrix).T
+        
+    return rotated_data
+
 class PointCloudDataset(Dataset):
     """Point cloud dataset."""
 
@@ -58,9 +74,8 @@ class PointCloudDataset(Dataset):
         return len(self.point_clouds)
 
     def __getitem__(self, idx):
-
         return self.point_clouds[idx]
-    
+
 
 def load_point_clouds(index_list, directory='./data/04379243'):
     
