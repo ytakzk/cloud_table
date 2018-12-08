@@ -76,15 +76,25 @@ def manipulate(params):
     return 1
 
 
-def generate_mesh():
+def generate_pointcloud():
+
+    '''
+    write the point cloud into a file
+    '''
+
+    write_point_cloud(generator_output[0].detach().numpy(), './pointcloud2mesh/mount/point_cloud.txt')
+    return 1
+
+
+def generate_mesh(alpha):
 
     '''
     write the point cloud into a file
     call a c++ program to generate mesh
     '''
 
-    write_point_cloud(generator_output[0].detach().numpy(), './pointcloud2mesh/mount/point_cloud.txt')
+    generate_pointcloud()
 
-    command = 'docker exec pointcloud2mesh /DeepTable/pointcloud2mesh/build/pointcloud2mesh.out /DeepTable/pointcloud2mesh/mount/point_cloud.txt /DeepTable/pointcloud2mesh/mount/output.off'
+    command = 'docker exec pointcloud2mesh /DeepTable/pointcloud2mesh/build/pointcloud2mesh.out /DeepTable/pointcloud2mesh/mount/point_cloud.txt /DeepTable/pointcloud2mesh/mount/output.off %.5f' % alpha
     call(command.split(' '))
     return 1

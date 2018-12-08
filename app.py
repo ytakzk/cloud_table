@@ -53,9 +53,15 @@ while 1:
         controller.manipulate(params)
         conn.sendall(data)
 
+    elif key == 'generate_pointcloud':
+        
+        controller.generate_pointcloud()
+        conn.sendall(data)
+
     elif key == 'generate_mesh':
         
-        controller.generate_mesh()
+        alpha = float(arr[1])
+        controller.generate_mesh(alpha)
         conn.sendall(data)
 
     elif key == 'close':

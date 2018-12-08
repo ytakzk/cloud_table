@@ -24,12 +24,13 @@ typedef CGAL::Surface_mesh<Point> Mesh;
 int main(int argc, char* argv[])
 {
     
-    if (argc != 3) {
-        throw std::invalid_argument("The 1st argument: input file name\nThe 2nd argument: output file name (.off)");
+    if (argc != 4) {
+            throw std::invalid_argument("The 1st argument: input file name\nThe 2nd argument: output file name (.off)\nThe 3rd argument: alpha value (if not positive, aptimized alpha is used)");
     }
     
     std::string input_file_name(argv[1]);
     std::string output_file_name(argv[2]);
+    float alpha(std::stof(argv[3]));
     
     std::cout << input_file_name << std::endl;
     std::cout << output_file_name << std::endl;
@@ -47,16 +48,28 @@ int main(int argc, char* argv[])
     std::cout << "Delaunay computed." << std::endl;
     // compute alpha shape
     Alpha_shape_3 as(dt);
-    std::cout << "Alpha shape computed in REGULARIZED mode by defaut."
+    std::cout << "Alpha shape computed in REGULARIZED mode by default."
     << std::endl;
-    // find optimal alpha values
-    Alpha_shape_3::NT alpha_solid = as.find_alpha_solid();
-    Alpha_iterator opt = as.find_optimal_alpha(1);
-    std::cout << "Smallest alpha value to get a solid through data points is "
-    << alpha_solid << std::endl;
-    std::cout << "Optimal alpha value to get one connected component is "
-    <<  *opt    << std::endl;
-    as.set_alpha(*opt);
+    
+    if (alpha > 0) {
+        
+        std::cout << "Alpha value is manually assigned " << alpha << std::endl;
+        as.set_alpha(alpha);
+
+    } else {
+
+        // find optimal alpha values
+        Alpha_shape_3::NT alpha_solid = as.find_alpha_solid();
+        Alpha_iterator opt = as.find_optimal_alpha(1);
+        std::cout << "Smallest alpha value to get a solid through data points is "
+        << alpha_solid << std::endl;
+        std::cout << "Optimal alpha value to get one connected component is "
+        <<  *opt    << std::endl;
+        
+        as.set_alpha(*opt);
+        
+    }
+    
     assert(as.number_of_solid_components() == 1);
     
     std::vector<Alpha_shape_3::Facet> facets;
