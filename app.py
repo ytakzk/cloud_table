@@ -16,7 +16,7 @@ print('Connection address:', TCP_IP, TCP_PORT)
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((TCP_IP, TCP_PORT))
-s.listen(1)
+s.listen(10)
  
 conn, addr = s.accept()
 
@@ -31,7 +31,7 @@ while 1:
     string = data.decode('utf-8')
     print(string)
 
-    arr = string.split('__')
+    arr = string.split('&')[0].split('__')
     key = arr[0]
 
     if key == 'fetch_data':
@@ -51,6 +51,7 @@ while 1:
             params[k] = d
 
         controller.manipulate(params)
+        controller.generate_pointcloud()
         conn.sendall(data)
 
     elif key == 'generate_pointcloud':
@@ -70,5 +71,5 @@ while 1:
     else:
         pass
 
-    print("received data:", data)
-    print("received key:", key)
+    # print("received data:", data)
+    # print("received key:", key)
