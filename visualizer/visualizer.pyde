@@ -8,18 +8,14 @@ from gui import GUI
 
 def gui_callback(key, value):
     
-    global manipulation, index, decoder
+    global index, decoder
     
     if key == 'index':
         index = value
         dataset.fetch(value)
-        socket_client.send('fetch_data__%d&' % value)
-        operation = 'manipulate__0:0&'
+        socket_client.send('fetch_data__%d;&' % value)
+        operation = 'manipulate__0:0;&'
         socket_client.send(operation)
-        
-    elif key == 'manipulation':
-        
-        manipulation = bool(value)
         
     elif key == 'diff':
         
@@ -38,22 +34,25 @@ def socket_callback(data):
 
 def setup():
     
-    global dataset, decoder, socket_client, gui, cam, manipulation, index
+    global dataset, decoder, socket_client, gui, cam, index
     
     size(1280, 720, P3D)
-    
+    fullScreen()
+
     cam = PeasyCam(this, width * 0.5, height * 0.5, 0, 100)
     gui = GUI(ControlP5(this), cam, gui_callback)
     
+    zoomRatio = 0.25
+    ortho(-width / 2*zoomRatio, width / 2*zoomRatio, -height / 2*zoomRatio, height / 2*zoomRatio, -1000, 1000)
+    
     index = 0
-    manipulation = False
     
     socket_client = SocketClient(socket_callback)
     dataset = Dataset()
     dataset.fetch(0)
     decoder = Decoder()
     decoder.fetch()
-    socket_client.send('fetch_data__0&')
+    socket_client.send('fetch_data__0;&')
 
     
 def draw():
@@ -61,19 +60,21 @@ def draw():
     background(0)
     translate(width * 0.5, height * 0.5)
     
-    cam.setActive(not gui.is_operation())
+    cam.setActive(not gui.is_operation() and mouseX < width - 145)
     
-    if manipulation and not decoder.fetched:
+    if gui.out and not decoder.fetched:
         
         operation = 'manipulate__'
         for i, diff in enumerate(gui.diff_list):
             operation += '%d:%.3f,' % (i, diff)
-        operation = operation[:-1] + '&'
+        operation = operation[:-1] + ';&'
         
         socket_client.send(operation)
     
-    if manipulation:
-        decoder.draw()
-    else:
+    if gui.in:
         dataset.draw()
+
+    if gui.out:
+        decoder.draw()
+
     gui.draw()

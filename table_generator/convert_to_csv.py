@@ -11,10 +11,12 @@ def load_ply(file_name):
 file_names = glob.glob('./data/04379243/*.ply')
 
 point_clouds = []
+i = 0
 for file_name in file_names:
-    print(file_name)
-    name = file_name.split('.')[1].split('\\')[1]
+    name = file_name.split('.')[1].split('/')[-1]
     points = load_ply(file_name)
 
     output_name = './data/csv/%s.csv' % name
-    np.savetxt(output_name, points, delimiter=',', fmt='%.2f')
+    print(i, output_name)
+    i += 1
+    np.savetxt(output_name, points, delimiter=',', fmt='%.4f')

@@ -9,20 +9,28 @@ class GUI():
         self.cam = cam
         self.callback = callback
         self.index = 0
-        self.manipulation = False
+        self.in  = True
+        self.out = False
         self.diff_list = [0.0 for _ in range(32)]
         self.lastTouchedTime = 0.0
         
-        self.cp5.addToggle('manipulation') \
-            .setValue(False) \
+        self.cp5.addToggle('in') \
+            .setValue(self.in) \
             .setPosition(20, height - 40) \
             .setSize(16, 16) \
             .addListener(self.listener)
+
+        self.cp5.addToggle('out') \
+            .setValue(self.out) \
+            .setPosition(40, height - 40) \
+            .setSize(16, 16) \
+            .addListener(self.listener)
+                
         
         self.cp5.addSlider('index') \
             .setRange(0, 8000) \
-            .setSize(width - 120, 16) \
-            .setPosition(80, height - 40) \
+            .setSize(width - 90, 16) \
+            .setPosition(60, height - 40) \
             .setNumberOfTickMarks(8001) \
             .addListener(self.listener)
         
@@ -34,7 +42,7 @@ class GUI():
     
         self.cp5.addButton('reset') \
             .setValue(False) \
-            .setPosition(width - 145, height - 60) \
+            .setPosition(width - 30, 660) \
             .setSize(16, 16) \
             .addListener(self.listener)
     
@@ -47,7 +55,7 @@ class GUI():
         name = str(event.getName())
         
         if name.startswith('diff'):
-            # print name
+
             ind = int(name[5:])
             self.diff_list[ind] = float(event.getValue())            
             self.callback('diff', self.diff_list)
@@ -57,10 +65,13 @@ class GUI():
             self.index = int(event.getValue())
             self.callback('index', self.index)
 
-        elif name == 'manipulation':
+        elif name == 'in':
             
-            self.manipulation = bool(event.getValue())
-            self.callback('manipulation', self.manipulation)
+            self.in = bool(event.getValue())
+
+        elif name == 'out':
+            
+            self.out = bool(event.getValue())
 
         elif name == 'reset':
             

@@ -7,8 +7,8 @@ class Decoder():
     def __init__(self, scale=100):
         
         self.scale = scale
-        root = '/'.join(sketchPath().split('/')[:-1])
-        self.path = '%s/pointcloud2mesh/mount/point_cloud.txt' % root
+        sep = '\\' if 'windows' in platformNames[this.platform].lower() else '/'         
+        self.path = sep.join(sketchPath().split(sep)[:-1] + ['pointcloud2mesh', 'mount', 'point_cloud.txt'])      
         self.shape = None
         self.fetched = False
 
@@ -16,8 +16,10 @@ class Decoder():
         
         self.shape = createShape()
         self.shape.beginShape(POINTS)
-        self.shape.stroke(255)
-        self.shape.fill(255)
+        # self.shape.stroke(255)
+        # self.shape.fill(255)
+        self.shape.stroke(200, 70, 0)
+        self.shape.fill(200, 70, 0)
 
         with open(self.path) as file:
             

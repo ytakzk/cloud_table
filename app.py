@@ -23,15 +23,15 @@ conn, addr = s.accept()
 print('initialize controller')
 controller.init()
 
-while 1:
+def run(operation):
 
-    data = conn.recv(BUFFER_SIZE)
-    if not data: break
+    if len(operation) == 0 or operation[-1] != ';':
+        return True
 
-    string = data.decode('utf-8')
-    print(string)
+    operation = operation[:-1]
 
-    arr = string.split('&')[0].split('__')
+    arr = operation.split('__')
+ 
     key = arr[0]
 
     if key == 'fetch_data':
@@ -67,9 +67,27 @@ while 1:
 
     elif key == 'close':
         s.close()
-        break    
+        return False    
     else:
         pass
 
-    # print("received data:", data)
-    # print("received key:", key)
+    return True
+
+while 1:
+
+    data = conn.recv(BUFFER_SIZE)
+    if not data: break
+
+    string = data.decode('utf-8')
+    print(string)
+
+    arr = string.split('&')[-2:]
+    
+    is_continue = True
+    for o in arr:
+        
+        if not run(o):
+            is_continue = False
+    
+    if not is_continue:
+        break
