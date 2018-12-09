@@ -28,15 +28,15 @@ class GUI():
                 
         
         self.cp5.addSlider('index') \
-            .setRange(0, 8000) \
+            .setRange(0, 10) \
             .setSize(width - 90, 16) \
             .setPosition(60, height - 40) \
-            .setNumberOfTickMarks(8001) \
+            .setNumberOfTickMarks(11) \
             .addListener(self.listener)
         
         for i in range(32):
             self.cp5.addSlider('diff_%d' % i) \
-                .setRange(-1.0, 1.0) \
+                .setRange(-0.3, 0.3) \
                 .setPosition(width - 145, 20 + i * 20) \
                 .addListener(self.listener)        
     
@@ -62,6 +62,9 @@ class GUI():
 
         elif name == 'index':
             
+            for i in range(32):
+                controller = self.cp5.getController('diff_%d' % i) 
+                controller.setValue(0)
             self.index = int(event.getValue())
             self.callback('index', self.index)
 
