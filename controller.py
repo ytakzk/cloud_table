@@ -55,7 +55,6 @@ def fetch_data(index):
 
     index_list = [index]
     point_clouds = load_point_clouds(index_list, directory='./table_generator/data/04379243')
-    print(point_clouds.shape)
     return 1
 
 
@@ -73,6 +72,7 @@ def manipulate(params):
 
     generator.manipulator = manipulator
     generator_output = generator(point_clouds)
+
     return 1
 
 

@@ -56,7 +56,7 @@ class PointCloudDataset(Dataset):
 
     def __init__(self, number=-1, directory='./data/04379243'):
         
-        file_names = glob.glob('%s/*.ply' % directory)
+        file_names = sorted(glob.glob('%s/*.ply' % directory))
 
         if number > 0 and len(file_names) > number:
             file_names = file_names[:number]
@@ -79,8 +79,7 @@ class PointCloudDataset(Dataset):
 
 def load_point_clouds(index_list, directory='./data/04379243'):
     
-    file_names = glob.glob('%s/*.ply' % directory)
-
+    file_names = sorted(glob.glob('%s/*.ply' % directory))
     point_clouds = []
     for i in index_list:
         

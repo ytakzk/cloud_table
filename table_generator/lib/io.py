@@ -66,8 +66,7 @@ class PointCloudDataset(Dataset):
 
 def load_point_clouds(index_list, directory='./data/04379243'):
     
-    file_names = glob.glob('%s/*.ply' % directory)
-
+    file_names = sorted(glob.glob('%s/*.ply' % directory))
     point_clouds = []
     for i, file_name in enumerate(file_names):
         
