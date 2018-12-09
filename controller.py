@@ -89,11 +89,8 @@ def generate_pointcloud():
 def generate_mesh(alpha):
 
     '''
-    write the point cloud into a file
     call a c++ program to generate mesh
     '''
-
-    generate_pointcloud()
 
     command = 'docker exec pointcloud2mesh /DeepTable/pointcloud2mesh/build/pointcloud2mesh.out /DeepTable/pointcloud2mesh/mount/point_cloud.txt /DeepTable/pointcloud2mesh/mount/output.off %.5f' % alpha
     call(command.split(' '))
