@@ -11,7 +11,7 @@ class SocketClient():
         self.callback = callback
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.socket.connect((HOST, PORT))
-        self.socket.settimeout(0.02)
+        self.socket.settimeout(0.03)
         self.lock = threading.Lock()
         threading.Thread(target = self.listen).start()
         
@@ -27,8 +27,7 @@ class SocketClient():
                 
                 data = self.socket.recv(1024)
                 if data:
-                    with self.lock:
-                        self.callback(data)
-                
+                    self.callback(data)
+                        
             except socket.timeout:
                 pass

@@ -13,6 +13,7 @@ class GUI():
         self.out = False
         self.diff_list = [0.0 for _ in range(32)]
         self.lastTouchedTime = 0.0
+        self.diff_listenable = True
         
         self.cp5.addToggle('in') \
             .setValue(self.in) \
@@ -28,15 +29,15 @@ class GUI():
                 
         
         self.cp5.addSlider('index') \
-            .setRange(0, 10) \
+            .setRange(0, 50) \
             .setSize(width - 90, 16) \
             .setPosition(60, height - 40) \
-            .setNumberOfTickMarks(11) \
+            .setNumberOfTickMarks(51) \
             .addListener(self.listener)
         
         for i in range(32):
             self.cp5.addSlider('diff_%d' % i) \
-                .setRange(-0.3, 0.3) \
+                .setRange(-0.4, 0.4) \
                 .setPosition(width - 145, 20 + i * 20) \
                 .addListener(self.listener)        
     
@@ -57,14 +58,19 @@ class GUI():
         if name.startswith('diff'):
 
             ind = int(name[5:])
-            self.diff_list[ind] = float(event.getValue())            
-            self.callback('diff', self.diff_list)
+            self.diff_list[ind] = float(event.getValue())      
+      
+            if self.diff_listenable:
+                self.callback('diff', self.diff_list)
 
         elif name == 'index':
-            
+
+            self.diff_listenable = False
             for i in range(32):
                 controller = self.cp5.getController('diff_%d' % i) 
                 controller.setValue(0)
+            self.diff_listenable = True
+
             self.index = int(event.getValue())
             self.callback('index', self.index)
 
@@ -78,9 +84,12 @@ class GUI():
 
         elif name == 'reset':
             
+            self.diff_listenable = False
             for i in range(32):
-                controller = self.cp5.getController('diff_%d' % i) 
+                controller = self.cp5.getController('diff_%d' % i)
                 controller.setValue(0)
+            self.diff_listenable = True
+            self.callback('diff', self.diff_list)
 
     def draw(self):
                 

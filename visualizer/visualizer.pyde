@@ -5,6 +5,7 @@ from dataset import Dataset
 from decoder import Decoder
 from socket_client import SocketClient
 from gui import GUI
+import time
 
 def gui_callback(key, value):
     
@@ -51,8 +52,11 @@ def setup():
     dataset = Dataset()
     dataset.fetch(0)
     decoder = Decoder()
-    decoder.fetch()
     socket_client.send('fetch_data__0;&')
+    time.sleep(0.3)
+    socket_client.send('manipulate__0:0;&')
+    time.sleep(0.3)
+    decoder.fetch()
 
     
 def draw():
@@ -66,7 +70,8 @@ def draw():
         
         operation = 'manipulate__'
         for i, diff in enumerate(gui.diff_list):
-            operation += '%d:%.3f,' % (i, diff)
+            if i == 0 or diff > 0:
+                operation += '%d:%.3f,' % (i, diff)
         operation = operation[:-1] + ';&'
         
         socket_client.send(operation)

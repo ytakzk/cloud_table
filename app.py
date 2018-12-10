@@ -38,7 +38,7 @@ def run(operation):
         
         index = int(arr[1])
         res = controller.fetch_data(index)
-        conn.sendall(data)
+        conn.sendall(operation.encode())
 
     elif key == 'manipulate':
 
@@ -52,18 +52,18 @@ def run(operation):
 
         controller.manipulate(params)
         controller.generate_pointcloud()
-        conn.sendall(data)
+        conn.sendall(operation.encode())
 
     elif key == 'generate_pointcloud':
         
         controller.generate_pointcloud()
-        conn.sendall(data)
+        conn.sendall(operation.encode())
 
     elif key == 'generate_mesh':
         
         alpha = float(arr[1])
         controller.generate_mesh(alpha)
-        conn.sendall(data)
+        conn.sendall(operation.encode())
 
     elif key == 'close':
         s.close()
@@ -81,13 +81,7 @@ while 1:
     string = data.decode('utf-8')
     print(string)
 
-    arr = string.split('&')[-2:]
+    arr = string.split('&')
     
-    is_continue = True
     for o in arr:
-        
-        if not run(o):
-            is_continue = False
-    
-    if not is_continue:
-        break
+        run(o)

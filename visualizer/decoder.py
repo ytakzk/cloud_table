@@ -26,7 +26,7 @@ class Decoder():
             reader = csv.reader(file, delimiter=' ')
             
             for row in reader:
-                
+
                 if len(row) != 3:
                     continue
                 self.shape.vertex(
