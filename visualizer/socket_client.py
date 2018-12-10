@@ -13,8 +13,10 @@ class SocketClient():
         self.socket.connect((HOST, PORT))
         self.socket.settimeout(0.03)
         self.lock = threading.Lock()
-        threading.Thread(target = self.listen).start()
-        
+        self.t = threading.Thread(target = self.listen)
+        self.t.setDaemon(True)
+        self.t.start()
+
     def send(self, string):
         
         self.socket.send(string)

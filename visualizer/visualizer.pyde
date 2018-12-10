@@ -30,8 +30,8 @@ def socket_callback(data):
     print data
 
     if data.startswith('manipulate'):
-        decoder.fetch()
         decoder.fetched = True
+        decoder.fetch()
 
 def setup():
     
