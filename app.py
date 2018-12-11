@@ -16,29 +16,29 @@ print('Connection address:', TCP_IP, TCP_PORT)
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((TCP_IP, TCP_PORT))
-s.listen(1)
+s.listen(10)
  
 conn, addr = s.accept()
 
 print('initialize controller')
 controller.init()
 
-while 1:
+def run(operation):
 
-    data = conn.recv(BUFFER_SIZE)
-    if not data: break
+    if len(operation) == 0 or operation[-1] != ';':
+        return True
 
-    string = data.decode('utf-8')
-    print(string)
+    operation = operation[:-1]
 
-    arr = string.split('__')
+    arr = operation.split('__')
+ 
     key = arr[0]
 
     if key == 'fetch_data':
         
         index = int(arr[1])
         res = controller.fetch_data(index)
-        conn.sendall(data)
+        conn.sendall(operation.encode())
 
     elif key == 'manipulate':
 
@@ -51,24 +51,37 @@ while 1:
             params[k] = d
 
         controller.manipulate(params)
-        conn.sendall(data)
+        controller.generate_pointcloud()
+        conn.sendall(operation.encode())
 
     elif key == 'generate_pointcloud':
         
         controller.generate_pointcloud()
-        conn.sendall(data)
+        conn.sendall(operation.encode())
 
     elif key == 'generate_mesh':
         
         alpha = float(arr[1])
         controller.generate_mesh(alpha)
-        conn.sendall(data)
+        conn.sendall(operation.encode())
 
     elif key == 'close':
         s.close()
-        break    
+        return False    
     else:
         pass
 
-    print("received data:", data)
-    print("received key:", key)
+    return True
+
+while 1:
+
+    data = conn.recv(BUFFER_SIZE)
+    if not data: break
+
+    string = data.decode('utf-8')
+    print(string)
+
+    arr = string.split('&')
+    
+    for o in arr:
+        run(o)
