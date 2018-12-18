@@ -79,7 +79,7 @@ def create_weather_table(time_index=5):
     point_clouds = load_same_point_clouds(10, len(id_list), directory='../table_generator/data/04379243')
 
     # location data
-    f = open('./city.list.json')
+    f = open('./cities.json')
     cities = json.load(f)
     f.close()
     places = []
