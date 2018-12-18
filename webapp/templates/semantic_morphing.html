@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Semantic Morphing Table</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Aldrich" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-indigo.min.css" />
+
+    <style>
+
+        body {
+            font-family: 'Aldrich', sans-serif;
+            margin: 0;
+        }
+
+        canvas { width: 100%; height: 100% }
+
+        h1 {
+            font-size: 20px;
+            line-height: 20px;
+            margin: 0;
+        }
+
+        .floating {
+
+            position: absolute;
+            padding: 30px;
+            width: 600px;
+
+        }
+
+        .navigator {
+            padding-top: 20px;
+        }
+
+        .navigator .create {
+            text-align: right;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div id="Stats-output">
+
+    <div class="floating" id="app">
+        <h1>SEMANTIC MORPHING</h1>
+
+        <section class="navigator">
+    
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                <tbody>
+                    <tr>
+                        <td>TABLE 1</td>
+                        <td><input id="table1" class="mdl-slider mdl-js-slider" type="range" min="0" :max="number_of_tables - 1" v-model="table_index_1" tabindex="0"></td>
+                        <td>[[ table_index_1 ]]</td>
+                    </tr>
+                    <tr>
+                        <td>TABLE 2</td>
+                        <td><input id="table2" class="mdl-slider mdl-js-slider" type="range" min="0" :max="number_of_tables - 1" v-model="table_index_2" tabindex="1"></td>
+                        <td>[[ table_index_2 ]]</td>
+                    </tr>
+                    {% if not True %}
+                    <tr>
+                        <td>ALPHA</td>
+                        <td><input id="alpha" class="mdl-slider mdl-js-slider" type="range" min="0" max="1" v-model="alpha" step="0.1" tabindex="2"></td>
+                        <td>[[ alpha ]]</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect create" v-on:click="create">CREATE</button></td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+                        
+        </section>
+    </div>
+
+</body>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/99/three.min.js"></script>
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+<script type="module" src="/static/js/semantic_morphing.js"></script>
+
+</html>
