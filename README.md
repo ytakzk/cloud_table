@@ -30,21 +30,21 @@ Docker environments to run this project.
 
 ## Apps
 
-## tweak_latent_vector / Processing app
+### tweak_latent_vector / Processing app
 
 ![tweak_latent_vector](https://github.com/ytakzk/cloud_table/raw/master/images/tweak_latent_vector.jpg)
 
 In the docker container, run `python3 /cloud_table/python/socket_app.py` then open the Proceeing program. Note that you need to restart socket connection every time before running the Proceeing program.
 
 
-## semantic_morphing / web app
+### semantic_morphing / web app
 
 ![semantic_morphing](https://github.com/ytakzk/cloud_table/raw/master/images/semantic_morphing.jpg)
 
 In the docker container, run `python3 /cloud_table/python/webapp.py` then browse `http://127.0.0.1:9997/semantic_morphing`
 
 
-## weather_table / web app
+### weather_table / web app
 
 ![weather_table](https://github.com/ytakzk/cloud_table/raw/master/images/weather_table.jpg)
 
@@ -75,9 +75,8 @@ The easiest way to run this program is using Docker.
 
 ## Data Source
 * [Point clouds](https://www.dropbox.com/s/vmsdrae6x5xws1v/shape_net_core_uniform_samples_2048.zip)  
-Mesh model of Shape-Net-Core download
-1 point-cloud with 2048 points per model. 
-For tables, refer the files under `04379243`.
+1 point-cloud with 2048 points per model from [ShapeNet](https://www.shapenet.org/). For tables, refer the files under `04379243`.
+
 
 ## Workflow Inside
 
@@ -91,6 +90,7 @@ For tables, refer the files under `04379243`.
 1. Tweak the latent vector
 1. create a mesh from the point cloud
 1. Apply a joint system between connected edges
+
 
 ## Dependences
 
