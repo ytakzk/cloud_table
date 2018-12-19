@@ -92,6 +92,6 @@ def generate_mesh(alpha):
     call a c++ program to generate mesh
     '''
 
-    command = 'docker exec pointcloud2mesh /DeepTable/pointcloud2mesh/build/pointcloud2mesh.out /DeepTable/pointcloud2mesh/mount/point_cloud.txt /DeepTable/pointcloud2mesh/mount/output.off %.5f' % alpha
+    command = '/cloud_table/pointcloud2mesh/build/pointcloud2mesh.out /cloud_table/pointcloud2mesh/mount/point_cloud.txt /cloud_table/pointcloud2mesh/mount/output.off %.5f' % alpha
     call(command.split(' '))
     return 1

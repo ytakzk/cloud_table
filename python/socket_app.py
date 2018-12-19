@@ -1,15 +1,9 @@
 import socket
-import argparse
-
 import socket_controller as controller
 import json
 
-parser = argparse.ArgumentParser(description='initial conditions')
-parser.add_argument('-port', action='store', default='9999', type=int)
-args = parser.parse_args()
-
-TCP_IP = '127.0.0.1'
-TCP_PORT = args.port
+TCP_IP = '0.0.0.0'
+TCP_PORT = 9998
 BUFFER_SIZE = 1024
 
 print('Connection address:', TCP_IP, TCP_PORT)

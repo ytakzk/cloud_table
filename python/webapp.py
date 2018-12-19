@@ -1,6 +1,6 @@
 import argparse
 from flask import Flask, request, jsonify, render_template
-import controller
+import webapp_controller as controller
 
 def main():
 
@@ -49,7 +49,7 @@ def main():
         mesh = controller.generate_mesh(data)
         return mesh
 
-    app.run(port=9997, debug=True)
+    app.run(host='0.0.0.0', port=9997, debug=True)
 
 if __name__ == "__main__":
 

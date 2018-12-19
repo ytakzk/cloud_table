@@ -193,7 +193,7 @@ def generate_mesh(data, alpha=0.0):
     pc = np.array([x, y, z])
     write_point_cloud(pc, '../pointcloud2mesh/mount/point_cloud.txt')
 
-    command = 'docker exec pointcloud2mesh /DeepTable/pointcloud2mesh/build/pointcloud2mesh.out /DeepTable/pointcloud2mesh/mount/point_cloud.txt /DeepTable/pointcloud2mesh/mount/output.off %.5f' % alpha
+    command = '/cloud_table/pointcloud2mesh/build/pointcloud2mesh.out /cloud_table/pointcloud2mesh/mount/point_cloud.txt /cloud_table/pointcloud2mesh/mount/output.off %.5f' % alpha
     call(command.split(' '))
 
     file = open('../pointcloud2mesh/mount/output.off', 'r')
