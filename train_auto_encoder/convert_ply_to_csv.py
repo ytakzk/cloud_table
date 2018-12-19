@@ -10,7 +10,7 @@ def load_ply(file_name):
     cloud = PyntCloud.from_file(file_name)
     return cloud.points.values
     
-file_names = glob.glob('../mount/04379243/*.ply')
+file_names = glob.glob('/cloud_table/data/04379243/*.ply')
 
 point_clouds = []
 i = 0

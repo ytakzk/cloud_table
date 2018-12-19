@@ -5,12 +5,13 @@ import torch
 from torch.autograd import Variable
 from lib.io import load_point_clouds, write_point_cloud, load_same_point_clouds
 from lib.auto_encoder import Encoder, Decoder, AutoEncoder
+import lib.fetch_weather_data as fetch_weather_data
 import time
 import numpy as np
 import json
 import pandas as pd
 import csv
-
+ 
 class Generator(AutoEncoder):
     
     def __init__(self, encoder, decoder):
@@ -38,6 +39,8 @@ def init():
     '''
 
     global encoder, decoder, generator
+
+    fetch_weather_data.fetch()
 
     encoder = Encoder()
     decoder = Decoder()
@@ -94,7 +97,7 @@ def create_weather_table(time_index=5):
     # weather data
     df = pd.read_pickle('./data/weather.pkl')
     df.head()
-    df_std = (df - df.mean()) / df.std() * 0.1
+    df_std = (df - df.mean()) / df.std() * 0.15
     df_std.head()
     index = df.query('time_index==%d' % time_index).index
     manupulation_values = df_std.iloc[index, :].as_matrix()
