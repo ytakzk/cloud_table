@@ -1,12 +1,14 @@
 # from local console
 
-# docker run -it --name pointcloud2mesh -v {ABSOLUTE PATH}/DeepTable/pointcloud2mesh/mount:/DeepTable/pointcloud2mesh/mount pointcloud2mesh
-# docker run -it --name pointcloud2mesh -v C:/Users/ytakzk/ml/DeepTable/pointcloud2mesh/mount:/DeepTable/pointcloud2mesh/mount pointcloud2mesh
+# docker build ./ -t cloud_table
+
+# docker run -it --name cloud_table -v {ABSOLUTE PATH}/cloud_table/mount:/cloud_table/mount pointcloud2mesh
+# docker run -it --name cloud_table -v C:/Users/ytakzk/ml/cloud_table/mount:/cloud_table/mount -p 9997-9999:9997-9999 cloud_table
 
 # fetch repository
-cd DeepTable
+cd cloud_table
 git init
-git remote add origin https://github.com/ytakzk/DeepTable.git
+git remote add origin https://github.com/ytakzk/cloud_table.git
 git pull origin master
 
 # build pointcloud2mesh
@@ -17,7 +19,11 @@ cmake ..
 make
 
 # fetch data source
-cd /DeepTable/table_generator/data
+cd /mount
 curl -L -o ./04379243.zip https://www.dropbox.com/s/fpzchkh1zwvjkn6/04379243.zip?dl=0
-rm -f 04379243.zip
 unzip ./04379243.zip
+rm -f 04379243.zip
+mkdir 04379243_csv
+
+cd /cloud_table/table_generator
+python3 convert_ply_to_csv.py

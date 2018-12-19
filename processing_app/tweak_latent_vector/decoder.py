@@ -7,8 +7,10 @@ class Decoder():
     def __init__(self, scale=100):
         
         self.scale = scale
-        sep = '\\' if 'windows' in platformNames[this.platform].lower() else '/'         
-        self.path = sep.join(sketchPath().split(sep)[:-1] + ['pointcloud2mesh', 'mount', 'point_cloud.txt'])      
+        root_dir = os.path.dirname(os.path.dirname(sketchPath()))
+        file_template = os.sep.join([root_dir, 'pointcloud2mesh', 'mount', 'point_cloud.txt'])
+        print(file_template)
+
         self.shape = None
         self.fetched = False
 

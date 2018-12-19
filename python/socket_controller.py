@@ -82,7 +82,7 @@ def generate_pointcloud():
     write the point cloud into a file
     '''
 
-    write_point_cloud(generator_output[0].detach().numpy(), '../pointcloud2mesh/mount/point_cloud.txt')
+    write_point_cloud(generator_output[0].detach().numpy(), '../mount/point_cloud.txt')
     return 1
 
 
@@ -92,6 +92,6 @@ def generate_mesh(alpha):
     call a c++ program to generate mesh
     '''
 
-    command = '/cloud_table/pointcloud2mesh/build/pointcloud2mesh.out /cloud_table/pointcloud2mesh/mount/point_cloud.txt /cloud_table/pointcloud2mesh/mount/output.off %.5f' % alpha
+    command = '/cloud_table/pointcloud2mesh/build/pointcloud2mesh.out /cloud_table/mount/point_cloud.txt /cloud_table/mount/output.off %.5f' % alpha
     call(command.split(' '))
     return 1

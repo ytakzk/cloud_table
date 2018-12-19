@@ -103,5 +103,6 @@ venv.bak/
 .mypy_cache/
 
 .DS_Store
-data/**/
+mount/**/
 table_generator/models/*_tmp.pt
+table_generator/data/**/

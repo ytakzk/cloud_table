@@ -1,16 +1,18 @@
 import os
 import glob
 import csv
+import os
 
 class Dataset():
     
     def __init__(self, scale=100):
         
         self.scale = scale
-        
-        sep = '\\' if 'windows' in platformNames[this.platform].lower() else '/'         
-        file_template = sep.join(sketchPath().split(sep)[:-1] + ['table_generator', 'data', 'csv', '*'])
-        
+       
+        root_dir = os.path.dirname(os.path.dirname(sketchPath()))
+
+        file_template = os.sep.join([root_dir, 'mount', '04379243_csv', '*'])
+
         self.paths = sorted(glob.glob(file_template))
         self.shape = None
 
