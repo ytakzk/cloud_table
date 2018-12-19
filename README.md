@@ -58,14 +58,14 @@ The easiest way to set up this environment is to use Docker.
 In the docker container, run `python3 /cloud_table/python/socket_app.py` then open the Proceeing program. Note that you need to restart socket connection every time before running the Proceeing program.
 
 
-### semantic_morphing / web app
+### semantic_morphing / web app - [DEMO](http://cloudtable.ytakzk.me/semantic_morphing)  
 
 ![semantic_morphing](https://github.com/ytakzk/cloud_table/raw/master/images/semantic_morphing.jpg)
 
 In the docker container, run `python3 /cloud_table/python/webapp.py` then browse `http://127.0.0.1:9997/semantic_morphing`
 
 
-### weather_table / web app
+### weather_table / web app - [DEMO](http://cloudtable.ytakzk.me/weather_table)  
 
 ![weather_table](https://github.com/ytakzk/cloud_table/raw/master/images/weather_table.jpg)
 
