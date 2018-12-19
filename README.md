@@ -26,7 +26,30 @@ Grasshopper scripts to call the programs above.
 * **processing_app**  
 Processing applications.  
 * **cloudtable_docker**  
-Docker environments to run this project.  
+Docker environments to run this project. 
+
+## Apps
+
+## tweak_latent_vector / Processing app
+
+![tweak_latent_vector](https://github.com/ytakzk/cloud_table/raw/master/images/tweak_latent_vector.jpg)
+
+In the docker container, run `python3 /cloud_table/python/socket_app.py` then open the Proceeing program. Note that you need to restart socket connection every time before running the Proceeing program.
+
+
+## semantic_morphing / web app
+
+![semantic_morphing](https://github.com/ytakzk/cloud_table/raw/master/images/semantic_morphing.jpg)
+
+In the docker container, run `python3 /cloud_table/python/webapp.py` then browse `http://127.0.0.1:9997/semantic_morphing`
+
+
+## weather_table / web app
+
+![weather_table](https://github.com/ytakzk/cloud_table/raw/master/images/weather_table.jpg)
+
+In the docker container, run `python3 /cloud_table/python/webapp.py` then browse `http://127.0.0.1:9997/weather_table`
+
 
 ## Environments
 
@@ -49,8 +72,6 @@ The easiest way to run this program is using Docker.
 `docker start -i cloud_table`
 1. Run a webserver in the docker container  
 `cd /cloud_table/python && python3 webapp.py`
-
-
 
 ## Data Source
 * [Point clouds](https://www.dropbox.com/s/vmsdrae6x5xws1v/shape_net_core_uniform_samples_2048.zip)  
