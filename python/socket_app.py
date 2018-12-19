@@ -10,7 +10,7 @@ print('Connection address:', TCP_IP, TCP_PORT)
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((TCP_IP, TCP_PORT))
-s.listen(10)
+s.listen(1)
  
 conn, addr = s.accept()
 
@@ -69,13 +69,17 @@ def run(operation):
 
 while 1:
 
-    data = conn.recv(BUFFER_SIZE)
-    if not data: break
+    try:
+        data = conn.recv(BUFFER_SIZE)
+        if not data: break
 
-    string = data.decode('utf-8')
-    print(string)
+        string = data.decode('utf-8')
+        print(string)
 
-    arr = string.split('&')
-    
-    for o in arr:
-        run(o)
+        arr = string.split('&')
+        
+        for o in arr:
+            run(o)
+    except socket.error:
+        cl.close()
+        break
