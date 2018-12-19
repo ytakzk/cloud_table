@@ -22,13 +22,25 @@ The join in contrast would have a strong emphasize on the human intent.
 
 ## How to Use
 
+#### For the first time
+
 1. Clone this repository
 1. Build a docker image  
-`cd cloudtable_docker & docker build ./ -t cloud_table`
+`cd cloudtable_docker && docker build ./ -t cloud_table`
 1. Run a docker container  
 `docker run -it --name cloud_table -v {ABSOLUTE PATH}/cloud_table:/cloud_table -p 9997-9999:9997-9999 cloud_table`
+1. Run a webserver in the docker container  
+`cd /cloud_table/python && python3 webapp.py`
 
-After you restart your computer, enter `docker start -i cloud_table` to run the container.
+
+#### From the next time
+
+1. Start the docker container  
+`docker start -i cloud_table`
+1. Run a webserver in the docker container  
+`cd /cloud_table/python && python3 webapp.py`
+
+
 
 ## Data Source
 * [Point clouds](https://www.dropbox.com/s/vmsdrae6x5xws1v/shape_net_core_uniform_samples_2048.zip)  
