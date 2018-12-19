@@ -22,15 +22,25 @@ The join in contrast would have a strong emphasize on the human intent.
 
 ## How to Use
 
-1. Clone this repository
-1. Download [Point clouds](https://www.dropbox.com/s/vmsdrae6x5xws1v/shape_net_core_uniform_samples_2048.zip) and paste the directory of  `04379243` under `DeepCloud/table_generator/data/`
-1. Build a docker image `cd cgal_on_ubuntu && docker build . -t pointcloud2mesh`
-1. Run a docker container `docker run -it --name pointcloud2mesh -v {ABSOLUTE PATH}/DeepTable/pointcloud2mesh/mount:/DeepTable/pointcloud2mesh/mount pointcloud2mesh`
-1. In the docker container, paste the scripts in [installer.sh](https://github.com/ytakzk/DeepTable/blob/master/pointcloud2mesh/docker/scripts/installer.sh)
-1. exit from the container
-1. Run a grasshopper file
+#### For the first time
 
-After you restart your computer, enter `docker start -i pointcloud2mesh` to launch the server.
+1. Clone this repository
+1. Build a docker image  
+`cd cloudtable_docker && docker build ./ -t cloud_table`
+1. Run a docker container  
+`docker run -it --name cloud_table -v {ABSOLUTE PATH}/cloud_table:/cloud_table -p 9997-9999:9997-9999 cloud_table`
+1. Run a webserver in the docker container  
+`cd /cloud_table/python && python3 webapp.py`
+
+
+#### From the next time
+
+1. Start the docker container  
+`docker start -i cloud_table`
+1. Run a webserver in the docker container  
+`cd /cloud_table/python && python3 webapp.py`
+
+
 
 ## Data Source
 * [Point clouds](https://www.dropbox.com/s/vmsdrae6x5xws1v/shape_net_core_uniform_samples_2048.zip)  
