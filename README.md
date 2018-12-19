@@ -16,17 +16,17 @@ The join in contrast would have a strong emphasize on the human intent.
 ## Contents
 
 * **train_auto_encoder**  
-Train an auto encoder based on PointNet.  
+Training of an auto encoder based on PointNet.  
 * **python**  
 Python program to tweak point clouds for table manipulation.  
 * **pointcloud2mesh**  
 C++ program to create a mesh from a point cloud.   
 * **grasshopper**  
-Grasshopper scripts to call the programs above.   
+Grasshopper scripts as a client to call the programs above.   
 * **processing_app**  
-Processing applications.  
+Processing applications as a client.  
 * **cloudtable_docker**  
-Docker environments to run this project. 
+Docker environments hosting this project. 
 
 
 ## Environments
@@ -40,7 +40,7 @@ The easiest way to set up this environment is to use Docker.
 1. Clone this repository
 1. Build a docker image (takes around 5 mins)  
 `cd cloud_table/cloudtable_docker && docker build ./ -t cloud_table`
-1. Run a docker container  
+1. Run and log into a docker container (mount all files in this repository with the container)
 `docker run -it --name cloud_table -v {ABSOLUTE_PATH_OF_THIS_REPOSITORY}:/cloud_table -p 9997-9999:9997-9999 cloud_table`
 
 
@@ -55,38 +55,38 @@ The easiest way to set up this environment is to use Docker.
 
 ![tweak_latent_vector](https://github.com/ytakzk/cloud_table/raw/master/images/tweak_latent_vector.jpg)
 
-In the docker container, run `python3 /cloud_table/python/socket_app.py` then open the Proceeing program. Note that you need to restart socket connection every time before running the Proceeing program.
+In the docker container, run `python3 /cloud_table/python/socket_app.py` then open [tweak_latent_vector](https://github.com/ytakzk/cloud_table/tree/master/processing_app/tweak_latent_vector). Note that you need to restart its socket connection every time before running the Proceeing app.
 
 
 ### semantic_morphing / web app - [DEMO](http://cloudtable.ytakzk.me/semantic_morphing)  
 
 ![semantic_morphing](https://github.com/ytakzk/cloud_table/raw/master/images/semantic_morphing.jpg)
 
-In the docker container, run `python3 /cloud_table/python/webapp.py` then browse `http://127.0.0.1:9997/semantic_morphing`
+In the docker container, run `python3 /cloud_table/python/webapp.py` then browse `http://127.0.0.1:9997/semantic_morphing` with some modern browser
 
 
 ### weather_table / web app - [DEMO](http://cloudtable.ytakzk.me/weather_table)  
 
 ![weather_table](https://github.com/ytakzk/cloud_table/raw/master/images/weather_table.jpg)
 
-In the docker container, run `python3 /cloud_table/python/webapp.py` then browse `http://127.0.0.1:9997/weather_table`
+In the docker container, run `python3 /cloud_table/python/webapp.py` then browse `http://127.0.0.1:9997/weather_table` with some modern browser
 
 
 ## Data Source
-* [Point clouds](https://www.dropbox.com/s/vmsdrae6x5xws1v/shape_net_core_uniform_samples_2048.zip)  
-1 point-cloud with 2048 points per model from [ShapeNet](https://www.shapenet.org/). For tables, refer the files under `04379243`.
+* [Point clouds](https://www.dropbox.com/s/fpzchkh1zwvjkn6/04379243.zip)  
+1 point-cloud with 2048 points per model from [ShapeNet](https://www.shapenet.org/).
 
 
 ## Workflow
 
 ### Training Process
-1. Download point clouds from [DropBox](https://www.dropbox.com/s/vmsdrae6x5xws1v/shape_net_core_uniform_samples_2048.zip)  extracted from [ShapeNet](https://www.shapenet.org/)
-1. Train a neural net (auto encoder)
+1. Download point clouds from [DropBox](https://www.dropbox.com/s/fpzchkh1zwvjkn6/04379243.zip)  extracted from [ShapeNet](https://www.shapenet.org/)
+1. Train the auto encoder
 
 ### Manipulation Process
 
 1. Select a base table
-1. Tweak the latent vector
+1. Tweak its latent vector
 1. create a mesh from the point cloud
 1. Apply a joint system between connected edges
 
