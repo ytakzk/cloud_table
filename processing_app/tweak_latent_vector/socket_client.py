@@ -33,3 +33,6 @@ class SocketClient():
                         
             except socket.timeout:
                 pass
+                
+            except socket.error:
+                self.sockeT.close()

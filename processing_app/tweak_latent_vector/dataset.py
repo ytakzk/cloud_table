@@ -11,7 +11,7 @@ class Dataset():
        
         root_dir = os.path.dirname(os.path.dirname(sketchPath()))
 
-        file_template = os.sep.join([root_dir, 'mount', '04379243_csv', '*'])
+        file_template = os.sep.join([root_dir, 'data', '04379243_csv', '*'])
 
         self.paths = sorted(glob.glob(file_template))
         self.shape = None

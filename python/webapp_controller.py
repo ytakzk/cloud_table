@@ -42,8 +42,8 @@ def init():
     encoder = Encoder()
     decoder = Decoder()
 
-    encoder.load_state_dict(torch.load('../table_generator/models/encoder.pt', map_location={'cuda:0': 'cpu'}))
-    decoder.load_state_dict(torch.load('../table_generator/models/decoder.pt', map_location={'cuda:0': 'cpu'}))
+    encoder.load_state_dict(torch.load('/cloud_table/train_auto_encoder/models/encoder.pt', map_location={'cuda:0': 'cpu'}))
+    decoder.load_state_dict(torch.load('/cloud_table/train_auto_encoder/models/decoder.pt', map_location={'cuda:0': 'cpu'}))
     
     generator = Generator(encoder, decoder)
 
@@ -57,7 +57,7 @@ def fetch_point_clouds(index):
     global point_clouds
 
     index_list = [i for i in range(index)]
-    point_clouds = load_point_clouds(index_list, directory='../table_generator/data/04379243')
+    point_clouds = load_point_clouds(index_list, directory='/cloud_table/data/04379243')
 
     point_clouds = point_clouds.detach().numpy()
     print(point_clouds.shape)
@@ -75,7 +75,7 @@ def create_weather_table(time_index=5):
     id_list = [2352778, 3451138, 3941584, 3451189, 188714, 587084, 1496153, 1311874, 2643743, 5128638, 1850147, 1275339, 2657896, 5368361, 3369157, 360630, 184745, 1796236, 1880251, 2147714] 
 
     # input data
-    point_clouds = load_same_point_clouds(10, len(id_list), directory='../table_generator/data/04379243')
+    point_clouds = load_same_point_clouds(10, len(id_list), directory='/cloud_table/data/04379243')
 
     # location data
     f = open('./data/cities.json')
@@ -176,7 +176,7 @@ def generate_pointcloud():
     write the point cloud into a file
     '''
 
-    write_point_cloud(generator_output[0].detach().numpy(), '../mount/point_cloud.txt')
+    write_point_cloud(generator_output[0].detach().numpy(), '/cloud_table/data/point_cloud.txt')
     return 1
 
 
@@ -191,11 +191,11 @@ def generate_mesh(data, alpha=0.0):
     z = np.array(data['z'])
 
     pc = np.array([x, y, z])
-    write_point_cloud(pc, '../pointcloud2mesh/mount/point_cloud.txt')
+    write_point_cloud(pc, '/cloud_table/data/point_cloud.txt')
 
-    command = '/cloud_table/pointcloud2mesh/build/pointcloud2mesh.out /cloud_table/mount/point_cloud.txt /cloud_table/mount/output.off %.5f' % alpha
+    command = '/cloud_table/pointcloud2mesh/build/pointcloud2mesh.out /cloud_table/data/point_cloud.txt /cloud_table/data/output.off %.5f' % alpha
     call(command.split(' '))
 
-    file = open('../mount/output.off', 'r')
+    file = open('/cloud_table/data/output.off', 'r')
 
     return file.read()

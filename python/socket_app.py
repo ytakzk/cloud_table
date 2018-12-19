@@ -16,6 +16,7 @@ conn, addr = s.accept()
 
 print('initialize controller')
 controller.init()
+print('initialized')
 
 def run(operation):
 
@@ -60,6 +61,7 @@ def run(operation):
         conn.sendall(operation.encode())
 
     elif key == 'close':
+        conn.close()
         s.close()
         return False    
     else:
@@ -81,5 +83,6 @@ while 1:
         for o in arr:
             run(o)
     except socket.error:
-        cl.close()
+        conn.close()
+        s.close()
         break

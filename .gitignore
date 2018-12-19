@@ -103,7 +103,8 @@ venv.bak/
 .mypy_cache/
 
 .DS_Store
-mount/**/
-mount/*
+data/**/
+data/point_cloud.txt
+data/output.off
 table_generator/models/*_tmp.pt
 table_generator/data/**/

@@ -8,8 +8,7 @@ class Decoder():
         
         self.scale = scale
         root_dir = os.path.dirname(os.path.dirname(sketchPath()))
-        file_template = os.sep.join([root_dir, 'pointcloud2mesh', 'mount', 'point_cloud.txt'])
-        print(file_template)
+        self.path = os.sep.join([root_dir, 'data', 'point_cloud.txt'])
 
         self.shape = None
         self.fetched = False
