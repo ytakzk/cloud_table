@@ -25,10 +25,10 @@ The join in contrast would have a strong emphasize on the human intent.
 #### For the first time
 
 1. Clone this repository
-1. Build a docker image  
-`cd cloudtable_docker && docker build ./ -t cloud_table`
+1. Build a docker image (takes around 5 mins)  
+`cd cloud_table/cloudtable_docker && docker build ./ -t cloud_table`
 1. Run a docker container  
-`docker run -it --name cloud_table -v {ABSOLUTE PATH}/cloud_table:/cloud_table -p 9997-9999:9997-9999 cloud_table`
+`docker run -it --name cloud_table -v {ABSOLUTE PATH OF THIS REPOSITORY}/cloud_table:/cloud_table -p 9997-9999:9997-9999 cloud_table`
 1. Run a webserver in the docker container  
 `cd /cloud_table/python && python3 webapp.py`
 
