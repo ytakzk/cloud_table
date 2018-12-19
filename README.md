@@ -1,4 +1,4 @@
-# DeepTable
+# CloudTable
 
 ETH DFAB 2018 Project for Frame Mobel by Nicolas & Yuta  
 
