@@ -41,7 +41,7 @@ The easiest way to set up this environment is to use Docker.
 1. Build a docker image (takes around 5 mins)  
 `cd cloud_table/cloudtable_docker && docker build ./ -t cloud_table`
 1. Run a docker container  
-`docker run -it --name cloud_table -v {ABSOLUTE_PATH_OF_THIS_REPOSITORY}/cloud_table:/cloud_table -p 9997-9999:9997-9999 cloud_table`
+`docker run -it --name cloud_table -v {ABSOLUTE_PATH_OF_THIS_REPOSITORY}:/cloud_table -p 9997-9999:9997-9999 cloud_table`
 
 
 #### From the next time
