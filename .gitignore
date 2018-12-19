@@ -104,5 +104,6 @@ venv.bak/
 
 .DS_Store
 mount/**/
+mount/*
 table_generator/models/*_tmp.pt
 table_generator/data/**/
