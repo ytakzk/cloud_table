@@ -77,7 +77,7 @@ In the docker container, run `python3 /cloud_table/python/webapp.py` then browse
 1 point-cloud with 2048 points per model from [ShapeNet](https://www.shapenet.org/). For tables, refer the files under `04379243`.
 
 
-## Workflow Inside
+## Workflow
 
 ### Training Process
 1. Download point clouds from [DropBox](https://www.dropbox.com/s/vmsdrae6x5xws1v/shape_net_core_uniform_samples_2048.zip)  extracted from [ShapeNet](https://www.shapenet.org/)
