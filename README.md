@@ -33,7 +33,7 @@ Docker environments to run this project.
 
 ![system architecture](https://github.com/ytakzk/cloud_table/raw/master/images/system_architecture.jpg)
 
-The easiest way to run this program is using Docker.
+The easiest way to set up this environment is to use Docker.
 
 #### For the first time
 
@@ -41,16 +41,13 @@ The easiest way to run this program is using Docker.
 1. Build a docker image (takes around 5 mins)  
 `cd cloud_table/cloudtable_docker && docker build ./ -t cloud_table`
 1. Run a docker container  
-`docker run -it --name cloud_table -v {ABSOLUTE PATH OF THIS REPOSITORY}/cloud_table:/cloud_table -p 9997-9999:9997-9999 cloud_table`
+`docker run -it --name cloud_table -v {ABSOLUTE_PATH_OF_THIS_REPOSITORY}/cloud_table:/cloud_table -p 9997-9999:9997-9999 cloud_table`
 
 
 #### From the next time
 
 1. Start the docker container  
 `docker start -i cloud_table`
-1. Run a webserver in the docker container  
-`cd /cloud_table/python && python3 webapp.py`
-
 
 ## Apps
 
