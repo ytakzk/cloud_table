@@ -26,13 +26,14 @@ Grasshopper scripts to call the programs above.
 * **processing_app**  
 Processing applications.  
 * **cloudtable_docker**  
-Docker environments to run this project.  
+Docker environments to run this project. 
+
 
 ## Environments
 
 ![system architecture](https://github.com/ytakzk/cloud_table/raw/master/images/system_architecture.jpg)
 
-The easiest way to run this program is using Docker.
+The easiest way to set up this environment is to use Docker.
 
 #### For the first time
 
@@ -40,25 +41,43 @@ The easiest way to run this program is using Docker.
 1. Build a docker image (takes around 5 mins)  
 `cd cloud_table/cloudtable_docker && docker build ./ -t cloud_table`
 1. Run a docker container  
-`docker run -it --name cloud_table -v {ABSOLUTE PATH OF THIS REPOSITORY}/cloud_table:/cloud_table -p 9997-9999:9997-9999 cloud_table`
+`docker run -it --name cloud_table -v {ABSOLUTE_PATH_OF_THIS_REPOSITORY}:/cloud_table -p 9997-9999:9997-9999 cloud_table`
 
 
 #### From the next time
 
 1. Start the docker container  
 `docker start -i cloud_table`
-1. Run a webserver in the docker container  
-`cd /cloud_table/python && python3 webapp.py`
 
+## Apps
+
+### tweak_latent_vector / Processing app
+
+![tweak_latent_vector](https://github.com/ytakzk/cloud_table/raw/master/images/tweak_latent_vector.jpg)
+
+In the docker container, run `python3 /cloud_table/python/socket_app.py` then open the Proceeing program. Note that you need to restart socket connection every time before running the Proceeing program.
+
+
+### semantic_morphing / web app - [DEMO](http://cloudtable.ytakzk.me/semantic_morphing)  
+
+![semantic_morphing](https://github.com/ytakzk/cloud_table/raw/master/images/semantic_morphing.jpg)
+
+In the docker container, run `python3 /cloud_table/python/webapp.py` then browse `http://127.0.0.1:9997/semantic_morphing`
+
+
+### weather_table / web app - [DEMO](http://cloudtable.ytakzk.me/weather_table)  
+
+![weather_table](https://github.com/ytakzk/cloud_table/raw/master/images/weather_table.jpg)
+
+In the docker container, run `python3 /cloud_table/python/webapp.py` then browse `http://127.0.0.1:9997/weather_table`
 
 
 ## Data Source
 * [Point clouds](https://www.dropbox.com/s/vmsdrae6x5xws1v/shape_net_core_uniform_samples_2048.zip)  
-Mesh model of Shape-Net-Core download
-1 point-cloud with 2048 points per model. 
-For tables, refer the files under `04379243`.
+1 point-cloud with 2048 points per model from [ShapeNet](https://www.shapenet.org/). For tables, refer the files under `04379243`.
 
-## Workflow Inside
+
+## Workflow
 
 ### Training Process
 1. Download point clouds from [DropBox](https://www.dropbox.com/s/vmsdrae6x5xws1v/shape_net_core_uniform_samples_2048.zip)  extracted from [ShapeNet](https://www.shapenet.org/)
@@ -70,6 +89,7 @@ For tables, refer the files under `04379243`.
 1. Tweak the latent vector
 1. create a mesh from the point cloud
 1. Apply a joint system between connected edges
+
 
 ## Dependences
 
