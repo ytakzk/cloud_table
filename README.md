@@ -7,11 +7,14 @@
 <br><br>
 
 
-ETH DFAB 2018 Project for Frame Mobel by Nicolas & Yuta  
+ETH DFAB 2018 Mini-project for Frame Möbel by Nicolas & Yuta  
 
-Exercice to design a fdm printed join for a space frame, aimed at a table.  
-The general idea is to have as little human input as possible for the general design of the table.  
-The join in contrast would have a strong emphasize on the human intent.  
+Exercice to design a metal-fdm printed join for a space frame, aimed at a table.
+The exercice was taken as an oportunity to explore a possible way of sharing the work of designing, between a machine (computer system) and a human. 
+Given the short timeframe of this exploration, it was choosen from the start to split the design in two parts. 
+The main idea is to have as little human input as possible for the global design of the table (general shape and derived space-frame).  
+The join in contrast has a strong emphasize on the human intent (no form-finding strategies).  
+It is of note that this strict separation is not necessarly the best option, but merely a starting point in this research on human-machine intergration for design tasks, that some others may continue.
 
 ## Contents
 
@@ -129,8 +132,6 @@ In the docker container, run `python3 /cloud_table/python/webapp.py` then browse
 
 ## Misc 
 
-* [how to activate an environment in anaconda navigator](https://conda.io/docs/user-guide/tasks/manage-environments.html#activating-an-environment)
-* [Jupyter notebook config](https://jupyter-notebook.readthedocs.io/en/stable/config.html)
 * [Algorithm for generating a triangular mesh from a cloud of points](https://stackoverflow.com/questions/7879160/algorithm-for-generating-a-triangular-mesh-from-a-cloud-of-points)
 * [Using CGAL and Xcode](https://3d.bk.tudelft.nl/ken/en/2016/03/16/using-cgal-and-xcode.html)
 * [3D Alpha Shapes](https://doc.cgal.org/latest/Alpha_shapes_3/index.html)
