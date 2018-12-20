@@ -9,12 +9,13 @@
 
 ETH DFAB 2018 Mini-project for Frame Möbel by Nicolas & Yuta  
 
-Exercice to design a metal-fdm printed join for a space frame, aimed at a table.
-The exercice was taken as an oportunity to explore a possible way of sharing the work of designing, between a machine (computer system) and a human. 
-Given the short timeframe of this exploration, it was choosen from the start to split the design in two parts. 
+Exercice to design a metal-fdm printed join for a space frame, aimed at a table.  
+The exercice was taken as an oportunity to explore a possible way of sharing the work of designing, between a machine (computer system) and a human.  
+Given the short timeframe of this exploration, it was choosen from the start to split the design in two parts.  
 The main idea is to have as little human input as possible for the global design of the table (general shape and derived space-frame).  
 The join in contrast has a strong emphasize on the human intent (no form-finding strategies).  
 It is of note that this strict separation is not necessarly the best option, but merely a starting point in this research on human-machine intergration for design tasks, that some others may continue.
+
 
 ## Contents
 
