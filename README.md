@@ -131,6 +131,13 @@ In the docker container, run `python3 /cloud_table/python/webapp.py` then browse
 * [optas/latent_3d_points](https://github.com/optas/latent_3d_points)
 
 
+## Fabricated table 
+
+![cloud table](https://github.com/ytakzk/cloud_table/raw/master/images/table_01.jpg)
+![cloud table](https://github.com/ytakzk/cloud_table/raw/master/images/table_02.jpg)
+![cloud table](https://github.com/ytakzk/cloud_table/raw/master/images/table_03.jpg)
+
+
 ## Misc 
 
 * [Algorithm for generating a triangular mesh from a cloud of points](https://stackoverflow.com/questions/7879160/algorithm-for-generating-a-triangular-mesh-from-a-cloud-of-points)
@@ -142,10 +149,3 @@ In the docker container, run `python3 /cloud_table/python/webapp.py` then browse
 * [What The Heck Are VAE-GANs?](https://towardsdatascience.com/what-the-heck-are-vae-gans-17b86023588a)
 * [robust algorithm for surface reconstruction from 3D point cloud?](https://stackoverflow.com/questions/838761/robust-algorithm-for-surface-reconstruction-from-3d-point-cloud)
 * [Eigenchairs](https://vimeo.com/57901236)
-
-<br><br>
-
-![cloud table](https://github.com/ytakzk/cloud_table/raw/master/images/table_01.jpg)
-![cloud table](https://github.com/ytakzk/cloud_table/raw/master/images/table_02.jpg)
-![cloud table](https://github.com/ytakzk/cloud_table/raw/master/images/table_03.jpg)
-
