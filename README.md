@@ -148,5 +148,4 @@ In the docker container, run `python3 /cloud_table/python/webapp.py` then browse
 ![cloud table](https://github.com/ytakzk/cloud_table/raw/master/images/table_01.jpg)
 ![cloud table](https://github.com/ytakzk/cloud_table/raw/master/images/table_02.jpg)
 ![cloud table](https://github.com/ytakzk/cloud_table/raw/master/images/table_03.jpg)
-![cloud table](https://github.com/ytakzk/cloud_table/raw/master/images/rendered.jpg)
 
